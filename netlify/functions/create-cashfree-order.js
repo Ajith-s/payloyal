@@ -39,7 +39,10 @@ exports.handler = async (event) => {
   const customerPhone = String(input.customer_phone || '9999999999').replace(/[^0-9]/g, '').slice(-10);
   const customerId = input.customer_id || `cust_${customerPhone}`;
 
-  const siteUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://payloyal.in';
+  // During DNS propagation, Netlify's URL env var may point at the custom
+  // domain before it is reachable. PAYLOYAL_SITE_URL lets us force the
+  // working Netlify subdomain for Cashfree return URLs.
+  const siteUrl = process.env.PAYLOYAL_SITE_URL || process.env.DEPLOY_PRIME_URL || process.env.URL || 'https://payloyal.netlify.app';
   const endpoint = env === 'production'
     ? 'https://api.cashfree.com/pg/orders'
     : 'https://sandbox.cashfree.com/pg/orders';

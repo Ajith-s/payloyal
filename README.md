@@ -41,6 +41,7 @@ CASHFREE_ENV=sandbox
 CASHFREE_CLIENT_ID=<your test client id>
 CASHFREE_CLIENT_SECRET=<your test client secret>
 CASHFREE_API_VERSION=2025-01-01
+PAYLOYAL_SITE_URL=https://payloyal.netlify.app
 ```
 
 Do not store real API secrets in source files or browser code.
