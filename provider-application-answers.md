@@ -37,7 +37,7 @@ PayLoyal will collect UPI payments from end customers on behalf of onboarded mer
 3. PayLoyal provisions a UPI QR/VPA for the merchant.
 4. Customer scans the QR at the store and pays using any UPI app.
 5. Payment provider confirms payment and sends PayLoyal a webhook.
-6. PayLoyal shows transactions, customer repeat/new classification, rewards, and daily reports to the merchant.
+6. PayLoyal shows transactions, customer repeat/new classification, rewards, and AI-powered reports to the merchant.
 
 ## Payment modes requested
 
@@ -52,7 +52,7 @@ PayLoyal will collect UPI payments from end customers on behalf of onboarded mer
 - Merchant/sub-merchant onboarding flow
 - Settlement to merchant bank account where supported
 - Payment reference/RRN/transaction ID for reconciliation
-- Payer VPA or stable payer identifier when available and permitted, for repeat-customer analytics
+- Payer VPA or stable payer identifier when available and permitted, for customer insight analytics
 
 ## Refund policy summary
 
@@ -60,7 +60,7 @@ Subscription fees may be refunded within 7 days for incorrect charges or service
 
 ## Support contact
 
-- hello@payloyal.in
+- ajithshrm@gmail.com
 
 ## Current status
 

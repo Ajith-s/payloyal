@@ -28,4 +28,4 @@ PayLoyal is a merchant-side software product for cafes and small businesses in I
 - Real-time payment webhooks
 - Merchant/sub-merchant onboarding
 - Settlement to merchant bank account
-- Payer VPA or stable payer identifier when available for repeat-customer analytics
+- Payer VPA or stable payer identifier when available for customer insight analytics

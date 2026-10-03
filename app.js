@@ -41,7 +41,7 @@ function render() {
 
   const rewardEnabled = document.getElementById('rewardToggle')?.checked;
   const closeToReward = customers.filter(c => c.visits >= 3 && c.visits < 5).length;
-  document.getElementById('dailyReport').textContent = `🤖 PayLoyal daily report — Blue Bean Cafe\n\nSales: ${rupees(total)}\nPayments: ${payments.length}\nAverage order: ${rupees(total / payments.length)}\nNew customers: ${customers.filter(c => c.visits === 1).length}\nRepeat customers: ${repeatCustomers}\nPeak hour: 6–7 PM\n\n${rewardEnabled ? `${closeToReward} customers are close to earning ₹50 off.\nSuggested action: remind regulars about the 5-visit reward.` : 'Rewards are currently disabled.'}`;
+  document.getElementById('dailyReport').textContent = `🤖 PayLoyal AI report — Blue Bean Cafe\n\nSales: ${rupees(total)}\nPayments: ${payments.length}\nAverage order: ${rupees(total / payments.length)}\nNew customers: ${customers.filter(c => c.visits === 1).length}\nReturning customers: ${repeatCustomers}\nPeak hour: 6–7 PM\n\n${rewardEnabled ? `${closeToReward} customers are close to earning ₹50 off.\nSuggested action: remind regulars about the 5-visit reward.` : 'Rewards are currently disabled.'}`;
 }
 
 document.getElementById('loginForm')?.addEventListener('submit', e => {

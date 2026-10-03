@@ -27,7 +27,7 @@ Build a simple backend and database with a mock payment provider.
 - Customer
 - Reward rule
 - Reward event
-- Daily report
+- AI report
 
 ### Backend endpoints
 
@@ -79,16 +79,16 @@ Pilot pitch:
 
 Start manually or via WhatsApp Business API after opt-in.
 
-Daily report format:
+AI report format:
 
 ```text
-PayLoyal daily report — Blue Bean Cafe
+PayLoyal AI report — Blue Bean Cafe
 
 Sales: ₹18,420
 Payments: 86
 Average order: ₹214
 New customers: 52
-Repeat customers: 34
+Returning customers: 34
 Peak hour: 6–7 PM
 
 12 customers are close to a reward.

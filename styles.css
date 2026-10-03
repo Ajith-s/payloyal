@@ -86,3 +86,29 @@ pre { white-space: pre-wrap; background: #0e1726; color: #d9fbe8; border-radius:
   .site-header, .site-footer, .login-panel, .dash-header { align-items: flex-start; flex-direction: column; }
   .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
 }
+
+/* Professional landing page refinements */
+.refined-hero { min-height: 680px; }
+.hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.hero-badges span { border: 1px solid #d9e2f3; background: rgba(255,255,255,.72); border-radius: 999px; padding: 9px 12px; color: var(--ink); font-weight: 750; font-size: 13px; }
+.pro-card { border: 1px solid #dbe4f5; position: relative; overflow: hidden; }
+.pro-card:before { content: ""; position: absolute; inset: 0 0 auto 0; height: 7px; background: linear-gradient(90deg, var(--blue), var(--green)); }
+.stats-strip { margin: -28px 6vw 0; position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.stats-strip div { background: #fff; border: 1px solid var(--line); box-shadow: 0 12px 28px rgba(23,32,51,.08); border-radius: 22px; padding: 20px; }
+.stats-strip strong { display: block; font-size: 20px; }
+.stats-strip span, .section-subtitle { color: var(--muted); line-height: 1.55; }
+.feature-deep-dive { background: linear-gradient(180deg, #fff, #f7f9fc); }
+.feature-list { display: grid; gap: 14px; }
+.feature-list div { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 18px; box-shadow: 0 10px 24px rgba(23,32,51,.05); }
+.feature-list strong { display: block; margin-bottom: 5px; }
+.feature-list span { color: var(--muted); line-height: 1.5; }
+.premium-price h3 { font-size: 52px; margin: 18px 0 10px; letter-spacing: -0.05em; }
+.premium-price small { font-size: 18px; color: var(--muted); letter-spacing: 0; }
+.contact-section { background: #0e1726; color: #fff; }
+.contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 24px; background: linear-gradient(135deg, rgba(36,87,255,.22), rgba(0,166,106,.16)); border: 1px solid rgba(255,255,255,.16); border-radius: 30px; padding: 34px; }
+.contact-panel h2 { color: #fff; margin-bottom: 10px; }
+.contact-panel p { color: #c9d4e5; }
+@media (max-width: 900px) {
+  .stats-strip { grid-template-columns: 1fr; margin-top: 18px; }
+  .contact-panel { flex-direction: column; align-items: flex-start; }
+}

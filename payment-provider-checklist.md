@@ -20,7 +20,7 @@
 2. Can each merchant get a static UPI QR/VPA for their store counter?
 3. Can customers pay using any UPI app?
 4. Do payment webhooks include payer VPA or another stable payer identifier?
-5. Is PayLoyal allowed to store hashed payer identifiers for repeat-customer analytics?
+5. Is PayLoyal allowed to store hashed payer identifiers for customer insight analytics?
 6. Can settlement go directly to each merchant's bank account?
 7. If settlement goes through platform flow, what licenses/compliance apply?
 8. What KYC is required for small cafes/sole proprietors?
@@ -45,4 +45,4 @@
 - Payment webhook into PayLoyal backend
 - Transaction shown in dashboard within seconds/minutes
 - Repeat/new classification based on payer identifier if available
-- Daily report generated automatically
+- AI report generated automatically
