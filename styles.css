@@ -112,3 +112,17 @@ pre { white-space: pre-wrap; background: #0e1726; color: #d9fbe8; border-radius:
   .stats-strip { grid-template-columns: 1fr; margin-top: 18px; }
   .contact-panel { flex-direction: column; align-items: flex-start; }
 }
+
+/* Dashboard reward configuration */
+.panel-heading-row { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 14px; }
+.panel-heading-row h2 { margin-bottom: 4px; }
+.panel-heading-row p { margin: 0; color: var(--muted); }
+.reward-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.reward-form label { display: grid; gap: 6px; color: var(--muted); font-weight: 750; }
+.reward-form .reward-enabled { display: flex; color: var(--ink); align-self: end; }
+.reward-form button { align-self: end; }
+.eligible-panel .empty-state { background: var(--bg); color: var(--muted); border-radius: 14px; padding: 14px; line-height: 1.45; }
+.contact-email a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.contact-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.contact-actions .secondary { border: 1px solid rgba(255,255,255,.35); }
+@media (max-width: 900px) { .reward-form { grid-template-columns: 1fr; } }

@@ -75,10 +75,33 @@
             <div id="customerList" class="customer-list"></div>
           </section>
 
-          <section id="rewards" class="panel">
-            <h2>Rewards</h2>
-            <label class="toggle-row"><input id="rewardToggle" type="checkbox" checked /> Enable “5 visits = ₹50 off”</label>
-            <p id="rewardText">Customers receive a reward after 5 successful visits.</p>
+          <section id="rewards" class="panel rewards-panel">
+            <div class="panel-heading-row">
+              <div>
+                <h2>Custom rewards</h2>
+                <p>Create a simple reward rule for this merchant demo.</p>
+              </div>
+              <span id="rewardStatus" class="badge">Active</span>
+            </div>
+            <form id="rewardForm" class="reward-form">
+              <label>Reward name
+                <input id="rewardName" value="5 visits reward" required />
+              </label>
+              <label>Trigger after visits
+                <input id="rewardVisits" type="number" min="1" value="5" required />
+              </label>
+              <label>Reward value
+                <input id="rewardValue" value="₹50 off" required />
+              </label>
+              <label class="toggle-row reward-enabled"><input id="rewardToggle" type="checkbox" checked /> Reward enabled</label>
+              <button class="button primary" type="submit">Save reward</button>
+            </form>
+            <p id="rewardText"></p>
+          </section>
+
+          <section class="panel eligible-panel">
+            <h2>Reward eligibility</h2>
+            <div id="eligibleList" class="customer-list"></div>
           </section>
 
           <section id="report" class="panel report-panel">
