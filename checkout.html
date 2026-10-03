@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PayLoyal Cashfree Test Checkout</title>
+  <meta name="description" content="Cashfree test checkout for PayLoyal." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+</head>
+<body>
+  <main class="policy-page">
+    <a class="brand" href="index.html"><span class="brand-mark">₹</span><span>PayLoyal</span></a>
+    <h1>Cashfree test checkout</h1>
+    <p>This page creates a Cashfree sandbox order through a Netlify Function and opens the Cashfree checkout. Use only test credentials in Netlify environment variables.</p>
+
+    <form id="checkoutForm" class="login-form" style="max-width: 440px;">
+      <label>Amount in INR <input id="amount" type="number" min="1" step="1" value="10" required /></label>
+      <label>Customer phone <input id="phone" type="tel" value="9999999999" required /></label>
+      <label>Customer name <input id="name" value="PayLoyal Test Customer" required /></label>
+      <label>Customer email <input id="email" type="email" value="customer@example.com" required /></label>
+      <button class="button primary" type="submit">Create test order</button>
+    </form>
+
+    <h2>Result</h2>
+    <pre id="result">No order created yet.</pre>
+  </main>
+
+  <script>
+    const form = document.getElementById('checkoutForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      result.textContent = 'Creating Cashfree order...';
+
+      const payload = {
+        amount: Number(document.getElementById('amount').value),
+        customer_phone: document.getElementById('phone').value,
+        customer_name: document.getElementById('name').value,
+        customer_email: document.getElementById('email').value
+      };
+
+      try {
+        const response = await fetch('/.netlify/functions/create-cashfree-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        result.textContent = JSON.stringify(data, null, 2);
+
+        const sessionId = data?.order?.payment_session_id;
+        if (sessionId && window.Cashfree) {
+          const cashfree = Cashfree({ mode: 'sandbox' });
+          cashfree.checkout({ paymentSessionId: sessionId, redirectTarget: '_modal' });
+        }
+      } catch (error) {
+        result.textContent = `Error: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>

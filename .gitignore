@@ -1,0 +1,15 @@
+# Dependencies / build outputs
+node_modules/
+.netlify/
+dist/
+build/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
