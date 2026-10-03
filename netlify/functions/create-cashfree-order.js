@@ -22,7 +22,12 @@ exports.handler = async (event) => {
   const env = process.env.CASHFREE_ENV || 'sandbox';
 
   if (!clientId || !clientSecret) {
-    return json(500, { error: 'Cashfree credentials are not configured on Netlify.' });
+    return json(500, {
+      error: 'Cashfree credentials are not configured on Netlify.',
+      has_cashfree_client_id: Boolean(clientId),
+      has_cashfree_client_secret: Boolean(clientSecret),
+      hint: 'Set CASHFREE_CLIENT_ID and CASHFREE_CLIENT_SECRET in Netlify environment variables with Functions/runtime scope, then redeploy.'
+    });
   }
 
   let input;
