@@ -17,7 +17,7 @@ I'm building PayLoyal, a simple UPI payments and loyalty tool for local business
 7. Would you display a new QR if it gave you customer insight insights and rewards?
 8. What would stop you from switching QR codes?
 9. Would you ask a customer for WhatsApp number once if they wanted rewards?
-10. Would you pay ₹299/₹49/₹999 per month for this if it worked?
+10. Would you try this free for 30 days, then pay ₹249/month if it helped?
 
 ## Show demo
 

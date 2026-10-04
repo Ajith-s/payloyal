@@ -90,8 +90,14 @@
               <label>Trigger after visits
                 <input id="rewardVisits" type="number" min="1" value="5" required />
               </label>
+              <label>Reward type
+                <select id="rewardType">
+                  <option value="fixed">Fixed reward value</option>
+                  <option value="percent">% discount on order</option>
+                </select>
+              </label>
               <label>Reward value
-                <input id="rewardValue" value="₹50 off" required />
+                <input id="rewardValue" value="50" required />
               </label>
               <label class="toggle-row reward-enabled"><input id="rewardToggle" type="checkbox" checked /> Reward enabled</label>
               <button class="button primary" type="submit">Save reward</button>
@@ -102,6 +108,25 @@
           <section class="panel eligible-panel">
             <h2>Reward eligibility</h2>
             <div id="eligibleList" class="customer-list"></div>
+          </section>
+
+          <section class="panel leaderboard-panel">
+            <h2>Customer leaderboard</h2>
+            <div id="leaderboardList" class="customer-list"></div>
+          </section>
+
+          <section class="panel impact-panel">
+            <h2>30-day loyalty impact</h2>
+            <div id="impactGrid" class="impact-grid"></div>
+            <p id="impactSummary" class="impact-summary"></p>
+          </section>
+
+          <section class="panel redemption-panel">
+            <h2>Loyalty redemptions</h2>
+            <table>
+              <thead><tr><th>Customer</th><th>Reward</th><th>Discount</th><th>Status</th></tr></thead>
+              <tbody id="redemptionRows"></tbody>
+            </table>
           </section>
 
           <section id="report" class="panel report-panel">
