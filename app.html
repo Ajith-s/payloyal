@@ -12,6 +12,7 @@
     <aside class="sidebar">
       <a class="brand" href="index.html"><span class="brand-mark">₹</span><span>PayLoyal</span></a>
       <nav class="side-nav">
+        <a href="#get-started">Get started</a>
         <a href="#dashboard">Dashboard</a>
         <a href="#transactions">Transactions</a>
         <a href="#customers">Customers</a>
@@ -43,7 +44,7 @@
         <div class="dash-header">
           <div>
             <p class="eyebrow">Today</p>
-            <h1>Blue Bean Cafe</h1>
+            <h1 id="dashboardMerchantName">Blue Bean Cafe</h1>
           </div>
           <button id="simulatePayment" class="button secondary">Simulate UPI payment</button>
         </div>
@@ -55,14 +56,55 @@
           <div class="kpi"><span>Phone opt-in</span><strong id="phoneOptInKpi">0%</strong></div>
         </div>
 
+
+        <section id="get-started" class="panel get-started-panel">
+          <div class="panel-heading-row">
+            <div>
+              <p class="eyebrow">Bring your own UPI</p>
+              <h2>Get started with PayLoyal</h2>
+              <p>Add bare minimum merchant details for the demo. Full KYC, bank verification, and business documents can happen later when payments are production-ready.</p>
+            </div>
+            <span class="badge">No KYC for demo</span>
+          </div>
+          <form id="merchantOnboardingForm" class="merchant-form">
+            <label>Business name
+              <input id="businessName" value="Blue Bean Cafe" required />
+            </label>
+            <label>Existing UPI ID
+              <input id="merchantUpiId" value="bluebeancafe@okaxis" placeholder="merchant@bank" required />
+            </label>
+            <label>Owner / manager name
+              <input id="ownerName" value="Demo Owner" required />
+            </label>
+            <label>Contact phone
+              <input id="ownerPhone" type="tel" value="9999999999" maxlength="10" required />
+            </label>
+            <label>City
+              <input id="merchantCity" value="Bengaluru" required />
+            </label>
+            <label>Business type
+              <select id="businessType">
+                <option>Cafe</option>
+                <option>Bakery</option>
+                <option>Salon</option>
+                <option>Restaurant</option>
+                <option>Kirana / retail</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <button class="button primary" type="submit">Save merchant demo setup</button>
+          </form>
+          <p id="merchantSaveStatus" class="impact-summary">Saved demo merchants will be stored in Firebase when configured, with local browser fallback for now.</p>
+        </section>
+
         <div class="dashboard-grid">
           <section class="panel qr-panel">
             <h2>Printable PayLoyal QR</h2>
-            <img class="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fpayloyal.netlify.app%2Fpay.html%3Fmerchant%3Dblue-bean-cafe" alt="PayLoyal QR for Blue Bean Cafe" />
+            <img id="merchantQrImage" class="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fpayloyal.netlify.app%2Fpay.html%3Fmerchant%3Dblue-bean-cafe" alt="PayLoyal QR for merchant" />
             <p>Print this QR for the counter. Customers scan it, enter amount, pay with UPI, then optionally join rewards.</p>
-            <div class="qr-url">payloyal.in/pay/blue-bean-cafe</div>
+            <div id="merchantQrUrl" class="qr-url">payloyal.in/pay/blue-bean-cafe</div>
             <div class="hero-actions qr-actions">
-              <a class="button secondary" href="pay.html?merchant=blue-bean-cafe">Preview payment page</a>
+              <a id="previewPaymentPage" class="button secondary" href="pay.html?merchant=blue-bean-cafe">Preview payment page</a>
               <button class="button primary" type="button" onclick="window.print()">Print QR poster</button>
             </div>
           </section>
@@ -161,6 +203,7 @@
       </section>
     </main>
   </div>
-  <script src="app.js"></script>
+  <script src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

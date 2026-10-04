@@ -19,7 +19,7 @@
       <div class="merchant-check">
         <span>Paying to</span>
         <strong id="merchantNameSmall">Blue Bean Cafe</strong>
-        <small>Bring your own UPI · Powered by PayLoyal</small>
+        <small id="merchantUpiDisplay">Bring your own UPI · Powered by PayLoyal</small>
       </div>
 
       <label>Bill amount
@@ -70,7 +70,9 @@
     };
     const params = new URLSearchParams(location.search);
     const merchantId = params.get('merchant') || 'blue-bean-cafe';
-    const merchant = merchants[merchantId] || merchants['blue-bean-cafe'];
+    const merchant = { ...(merchants[merchantId] || merchants['blue-bean-cafe']) };
+    if (params.get('pn')) merchant.name = params.get('pn');
+    if (params.get('pa')) merchant.upiId = params.get('pa');
     const rupees = n => `₹${Math.round(Number(n || 0)).toLocaleString('en-IN')}`;
     const show = id => ['payStepAmount','payStepProcessing','payStepDone'].forEach(s => document.getElementById(s).classList.toggle('hidden', s !== id));
 
@@ -78,6 +80,7 @@
     document.getElementById('merchantNameSmall').textContent = merchant.name;
     document.getElementById('merchantNameReward').textContent = merchant.name;
     document.getElementById('receiptMerchant').textContent = merchant.name;
+    if (merchant.upiId) document.getElementById('merchantUpiDisplay').textContent = `UPI: ${merchant.upiId} · Powered by PayLoyal`;
     document.getElementById('progressText').textContent = `${merchant.progress} of ${merchant.target} visits toward ${merchant.reward}`;
     document.getElementById('progressBar').style.width = `${Math.min(100, (merchant.progress / merchant.target) * 100)}%`;
 
