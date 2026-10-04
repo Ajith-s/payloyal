@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pay Blue Bean Cafe — PayLoyal</title>
+  <meta name="description" content="Pay a PayLoyal merchant with UPI and optionally join rewards without installing an app." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="customer-body">
+  <main class="customer-demo pay-flow">
+    <a class="brand" href="index.html"><span class="brand-mark">₹</span><span>PayLoyal</span></a>
+
+    <section class="customer-card" id="payStepAmount">
+      <p class="eyebrow">Scan-to-pay merchant</p>
+      <h1 id="merchantName">Blue Bean Cafe</h1>
+      <p class="merchant-context">Confirm the merchant, enter your bill amount, and pay with any UPI app. No PayLoyal app install required.</p>
+
+      <div class="merchant-check">
+        <span>Paying to</span>
+        <strong id="merchantNameSmall">Blue Bean Cafe</strong>
+        <small>Powered by PayLoyal</small>
+      </div>
+
+      <label>Bill amount
+        <input id="payAmount" type="number" min="1" step="1" inputmode="numeric" value="180" />
+      </label>
+
+      <button class="button primary pay-button" id="payWithUpi">Pay with UPI</button>
+      <p class="fineprint">Demo mode: this simulates launching GPay, PhonePe, Paytm, BHIM, or another UPI app. In production this button will use the payment provider’s UPI intent/session.</p>
+    </section>
+
+    <section class="customer-card hidden" id="payStepProcessing">
+      <p class="eyebrow">Payment processing</p>
+      <h1>Your payment is being processed.</h1>
+      <p>If you want rewards from <span id="merchantNameReward">Blue Bean Cafe</span>, enter your phone number. You can skip this and your payment will still continue.</p>
+
+      <label>Phone number for rewards
+        <input id="rewardPhone" type="tel" placeholder="10-digit mobile number" maxlength="10" inputmode="numeric" />
+      </label>
+
+      <div class="hero-actions">
+        <button class="button primary" id="continueRewards">Continue with rewards</button>
+        <button class="button secondary" id="skipRewards">Skip</button>
+      </div>
+      <p class="fineprint">Your phone number is used for rewards and merchant campaigns only with consent. Merchants see opt-in counts, not your actual number.</p>
+    </section>
+
+    <section class="customer-card hidden" id="payStepDone">
+      <p class="eyebrow">Payment complete</p>
+      <h1 id="doneTitle">Thanks for paying.</h1>
+      <p id="doneMessage">Your payment was recorded.</p>
+      <div class="receipt-card">
+        <div><span>Merchant</span><strong id="receiptMerchant">Blue Bean Cafe</strong></div>
+        <div><span>Amount</span><strong id="receiptAmount">₹180</strong></div>
+        <div><span>Reward status</span><strong id="receiptReward">Not enrolled</strong></div>
+      </div>
+      <div class="reward-progress">
+        <span id="progressText">3 of 5 visits toward ₹50 off</span>
+        <div><i id="progressBar" style="width:60%"></i></div>
+      </div>
+      <a class="button secondary" href="index.html">Done</a>
+    </section>
+  </main>
+
+  <script>
+    const merchants = {
+      'blue-bean-cafe': { name: 'Blue Bean Cafe', reward: '₹50 off', progress: 3, target: 5 },
+      'demo': { name: 'Demo Merchant', reward: '10% off', progress: 1, target: 4 }
+    };
+    const params = new URLSearchParams(location.search);
+    const merchantId = params.get('merchant') || 'blue-bean-cafe';
+    const merchant = merchants[merchantId] || merchants['blue-bean-cafe'];
+    const rupees = n => `₹${Math.round(Number(n || 0)).toLocaleString('en-IN')}`;
+    const show = id => ['payStepAmount','payStepProcessing','payStepDone'].forEach(s => document.getElementById(s).classList.toggle('hidden', s !== id));
+
+    document.getElementById('merchantName').textContent = merchant.name;
+    document.getElementById('merchantNameSmall').textContent = merchant.name;
+    document.getElementById('merchantNameReward').textContent = merchant.name;
+    document.getElementById('receiptMerchant').textContent = merchant.name;
+    document.getElementById('progressText').textContent = `${merchant.progress} of ${merchant.target} visits toward ${merchant.reward}`;
+    document.getElementById('progressBar').style.width = `${Math.min(100, (merchant.progress / merchant.target) * 100)}%`;
+
+    document.getElementById('payWithUpi').addEventListener('click', () => {
+      const amount = Number(document.getElementById('payAmount').value || 0);
+      if (!amount || amount <= 0) { alert('Enter a valid bill amount.'); return; }
+      document.getElementById('receiptAmount').textContent = rupees(amount);
+      show('payStepProcessing');
+    });
+
+    document.getElementById('continueRewards').addEventListener('click', () => {
+      const phone = document.getElementById('rewardPhone').value.trim();
+      if (!/^\d{10}$/.test(phone)) { alert('Enter a valid 10-digit phone number or skip.'); return; }
+      document.getElementById('doneTitle').textContent = 'Rewards enabled.';
+      document.getElementById('doneMessage').textContent = `You will receive reward updates from ${merchant.name}. You are ${Math.max(0, merchant.target - merchant.progress)} visits away from ${merchant.reward}.`;
+      document.getElementById('receiptReward').textContent = 'Enrolled';
+      show('payStepDone');
+    });
+
+    document.getElementById('skipRewards').addEventListener('click', () => {
+      document.getElementById('doneTitle').textContent = 'Payment complete.';
+      document.getElementById('doneMessage').textContent = 'You skipped reward updates. You can opt in next time at this merchant.';
+      document.getElementById('receiptReward').textContent = 'Skipped';
+      show('payStepDone');
+    });
+  </script>
+</body>
+</html>

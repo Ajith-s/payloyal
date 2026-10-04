@@ -150,3 +150,20 @@ pre { white-space: pre-wrap; background: #0e1726; color: #d9fbe8; border-radius:
 .pricing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; max-width: 980px; }
 .privacy-panel, .premium-panel { background: linear-gradient(180deg, #fff, #f9fbff); }
 @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+/* PayLoyal QR payment flow */
+.qr-image { width: 220px; height: 220px; border-radius: 18px; border: 12px solid #fff; box-shadow: 0 0 0 1px var(--line), 0 12px 24px rgba(23,32,51,.08); }
+.qr-url { background: var(--bg); border-radius: 12px; padding: 10px; color: var(--muted); font-weight: 800; word-break: break-all; }
+.qr-actions { justify-content: center; }
+.merchant-check { background: var(--bg); border: 1px solid var(--line); border-radius: 18px; padding: 14px; display: grid; gap: 4px; }
+.merchant-check span, .merchant-check small, .receipt-card span { color: var(--muted); }
+.merchant-check strong { font-size: 20px; }
+.pay-button { width: 100%; font-size: 18px; padding: 17px 20px; }
+.receipt-card { display: grid; gap: 10px; background: var(--bg); border-radius: 18px; padding: 16px; }
+.receipt-card div { display: flex; justify-content: space-between; gap: 16px; }
+.compact-steps li { padding: 16px; }
+@media print {
+  body * { visibility: hidden; }
+  .qr-panel, .qr-panel * { visibility: visible; }
+  .qr-panel { position: absolute; inset: 0; width: 100%; box-shadow: none; border: 0; }
+}
