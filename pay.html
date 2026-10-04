@@ -14,12 +14,12 @@
     <section class="customer-card" id="payStepAmount">
       <p class="eyebrow">Scan-to-pay merchant</p>
       <h1 id="merchantName">Blue Bean Cafe</h1>
-      <p class="merchant-context">Confirm the merchant, enter your bill amount, and pay with any UPI app. No PayLoyal app install required.</p>
+      <p class="merchant-context">Confirm the merchant, enter your bill amount, and pay directly to the merchant’s existing UPI ID. No PayLoyal app install required.</p>
 
       <div class="merchant-check">
         <span>Paying to</span>
         <strong id="merchantNameSmall">Blue Bean Cafe</strong>
-        <small>Powered by PayLoyal</small>
+        <small>Bring your own UPI · Powered by PayLoyal</small>
       </div>
 
       <label>Bill amount
@@ -27,13 +27,13 @@
       </label>
 
       <button class="button primary pay-button" id="payWithUpi">Pay with UPI</button>
-      <p class="fineprint">Demo mode: this simulates launching GPay, PhonePe, Paytm, BHIM, or another UPI app. In production this button will use the payment provider’s UPI intent/session.</p>
+      <p class="fineprint">Demo mode: this simulates launching GPay, PhonePe, Paytm, BHIM, or another UPI app using the merchant’s existing UPI ID. In production this can use UPI intent and mark rewards pending verification.</p>
     </section>
 
     <section class="customer-card hidden" id="payStepProcessing">
       <p class="eyebrow">Payment processing</p>
-      <h1>Your payment is being processed.</h1>
-      <p>If you want rewards from <span id="merchantNameReward">Blue Bean Cafe</span>, enter your phone number. You can skip this and your payment will still continue.</p>
+      <h1>Payment submitted?</h1>
+      <p>If you completed payment and want rewards from <span id="merchantNameReward">Blue Bean Cafe</span>, enter your phone number. Your reward claim may be marked pending until the merchant verifies the payment. You can skip this and your payment will still continue.</p>
 
       <label>Phone number for rewards
         <input id="rewardPhone" type="tel" placeholder="10-digit mobile number" maxlength="10" inputmode="numeric" />
