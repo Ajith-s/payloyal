@@ -52,7 +52,7 @@
           <div class="kpi"><span>Total sales</span><strong id="salesKpi">₹0</strong></div>
           <div class="kpi"><span>Payments</span><strong id="paymentsKpi">0</strong></div>
           <div class="kpi"><span>Returning buyers</span><strong id="repeatKpi">0</strong></div>
-          <div class="kpi"><span>Average order</span><strong id="aovKpi">₹0</strong></div>
+          <div class="kpi"><span>Phone opt-in</span><strong id="phoneOptInKpi">0%</strong></div>
         </div>
 
         <div class="dashboard-grid">
@@ -73,6 +73,15 @@
           <section id="customers" class="panel">
             <h2>Customer insights</h2>
             <div id="customerList" class="customer-list"></div>
+          </section>
+
+          <section class="panel privacy-panel">
+            <h2>Reward opt-ins</h2>
+            <div class="impact-grid">
+              <div><strong id="phoneOptInCount">0</strong><span>Customers opted in</span></div>
+              <div><strong id="phoneOptInPercent">0%</strong><span>Opt-in rate</span></div>
+            </div>
+            <p class="impact-summary">Phone numbers are hidden from merchants. PayLoyal only shows aggregate opt-in counts, campaign reach, and reward activity.</p>
           </section>
 
           <section id="rewards" class="panel rewards-panel">
@@ -127,6 +136,16 @@
               <thead><tr><th>Customer</th><th>Reward</th><th>Discount</th><th>Status</th></tr></thead>
               <tbody id="redemptionRows"></tbody>
             </table>
+          </section>
+
+          <section class="panel premium-panel">
+            <h2>Premium notifications</h2>
+            <p>Premium plan: ₹500/month includes one monthly notification campaign to opted-in customers.</p>
+            <div class="impact-grid">
+              <div><strong id="campaignReach">0</strong><span>Estimated campaign reach</span></div>
+              <div><strong>1/mo</strong><span>Included campaigns</span></div>
+            </div>
+            <p class="impact-summary">Example: “You have a reward waiting at Blue Bean Cafe. Visit this week to redeem.”</p>
           </section>
 
           <section id="report" class="panel report-panel">

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PayLoyal Customer Reward Demo</title>
+  <meta name="description" content="Customer-side PayLoyal reward opt-in demo with no app install." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="customer-body">
+  <main class="customer-demo">
+    <a class="brand" href="index.html"><span class="brand-mark">₹</span><span>PayLoyal</span></a>
+
+    <section class="customer-card" id="stepPay">
+      <p class="eyebrow">Blue Bean Cafe</p>
+      <h1>Pay with UPI. Earn rewards.</h1>
+      <p>Enter the bill amount and continue to your preferred UPI app. No PayLoyal app install required.</p>
+      <label>Amount
+        <input id="customerAmount" type="number" min="1" value="180" />
+      </label>
+      <button class="button primary" id="payNow">Pay with UPI app</button>
+      <p class="fineprint">Demo only. In production this button launches a UPI intent/payment link from the payment provider.</p>
+    </section>
+
+    <section class="customer-card hidden" id="stepRewards">
+      <p class="eyebrow">Payment processing</p>
+      <h1>Your payment is being processed.</h1>
+      <p>Enter your phone number to receive reward updates from Blue Bean Cafe. You can skip this and your payment will still continue.</p>
+      <label>Phone number
+        <input id="customerPhone" type="tel" placeholder="10-digit mobile number" maxlength="10" />
+      </label>
+      <div class="hero-actions">
+        <button class="button primary" id="savePhone">Continue with rewards</button>
+        <button class="button secondary" id="skipPhone">Skip rewards</button>
+      </div>
+      <p class="fineprint">PayLoyal stores this with consent for rewards. The merchant sees opt-in totals, not the actual phone number.</p>
+    </section>
+
+    <section class="customer-card hidden" id="stepDone">
+      <p class="eyebrow">Reward status</p>
+      <h1 id="doneTitle">You’re all set.</h1>
+      <p id="doneMessage"></p>
+      <div class="reward-progress">
+        <span>3 of 5 visits</span>
+        <div><i style="width:60%"></i></div>
+      </div>
+      <a class="button secondary" href="index.html">Back to PayLoyal</a>
+    </section>
+  </main>
+  <script>
+    const show = id => ['stepPay','stepRewards','stepDone'].forEach(s => document.getElementById(s).classList.toggle('hidden', s !== id));
+    document.getElementById('payNow').addEventListener('click', () => show('stepRewards'));
+    document.getElementById('savePhone').addEventListener('click', () => {
+      const phone = document.getElementById('customerPhone').value.trim();
+      if (!/^\d{10}$/.test(phone)) { alert('Enter a valid 10-digit phone number or skip.'); return; }
+      document.getElementById('doneTitle').textContent = 'Rewards enabled.';
+      document.getElementById('doneMessage').textContent = 'You will receive reward updates for Blue Bean Cafe. You are 2 visits away from ₹50 off.';
+      show('stepDone');
+    });
+    document.getElementById('skipPhone').addEventListener('click', () => {
+      document.getElementById('doneTitle').textContent = 'Payment flow continued.';
+      document.getElementById('doneMessage').textContent = 'You skipped reward updates. You can opt in next time at this merchant.';
+      show('stepDone');
+    });
+  </script>
+</body>
+</html>
