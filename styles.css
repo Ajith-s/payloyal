@@ -273,3 +273,30 @@ pre { white-space: pre-wrap; background: #0e1726; color: #d9fbe8; border-radius:
 .setup-result { margin-top: 22px; background: #f8fbff; border: 1px solid #dbe4f5; border-radius: 24px; padding: 22px; display: grid; gap: 14px; justify-items: center; text-align: center; }
 .setup-result h3 { margin: 0; font-size: 26px; }
 @media (max-width: 900px) { .launchpad-choices { grid-template-columns: 1fr; } .launchpad-hero { padding: 30px; } }
+
+/* Simpler, more readable marketing treatment */
+.cf-hero h1 {
+  font-size: clamp(42px, 5.8vw, 76px);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  max-width: 900px;
+}
+.cf-hero .lead {
+  font-size: 20px;
+  line-height: 1.65;
+  max-width: 780px;
+}
+.announcement-pill { font-size: 14px; }
+.hero-product-card { max-width: 720px; justify-self: center; }
+.dashboard-preview-head h2 { font-size: 44px; }
+.preview-kpis div { padding: 18px; }
+.ai-insight-box { margin-top: 18px; }
+.simple-byo-section { background: #fff; color: var(--ink); }
+.simple-byo-panel { display: grid; grid-template-columns: .95fr 1.05fr; gap: 28px; align-items: center; border: 1px solid var(--line); border-radius: 30px; padding: 34px; background: linear-gradient(180deg, #f8fbff, #fff); box-shadow: 0 16px 44px rgba(15,23,42,.07); }
+.simple-byo-panel h2 { color: var(--ink); }
+.simple-byo-panel .section-subtitle { color: var(--muted); }
+.simple-byo-cards { display: grid; gap: 14px; }
+.simple-byo-cards div { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 18px; }
+.simple-byo-cards strong { display: block; font-size: 18px; margin-bottom: 5px; }
+.simple-byo-cards span { color: var(--muted); line-height: 1.45; }
+@media (max-width: 1000px) { .simple-byo-panel { grid-template-columns: 1fr; } }
