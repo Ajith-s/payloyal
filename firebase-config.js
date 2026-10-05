@@ -10,3 +10,26 @@ window.PAYLOYAL_FIREBASE_CONFIG = {
   appId: "1:576035048592:web:af69a1625d7f79962c5c15",
   measurementId: "G-Y0HRP5NBBJ"
 };
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /merchant_demo_setups/{docId} {
+      allow create: if request.resource.data.keys().hasOnly([
+        'businessName',
+        'upiId',
+        'ownerName',
+        'ownerPhoneLast4',
+        'city',
+        'businessType',
+        'slug',
+        'payUrl',
+        'source',
+        'createdAt'
+      ]);
+
+      allow read, update, delete: if false;
+    }
+  }
+}
