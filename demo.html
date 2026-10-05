@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PayLoyal Launchpad</title>
+  <meta name="description" content="Try PayLoyal: view a sample merchant dashboard or set up your existing UPI ID." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="app-body launchpad-body">
+  <main class="launchpad">
+    <a class="brand" href="index.html"><span class="brand-mark">₹</span><span>PayLoyal</span></a>
+
+    <section class="launchpad-hero">
+      <p class="eyebrow">PayLoyal Launchpad</p>
+      <h1>Try PayLoyal in two ways.</h1>
+      <p>Explore a sample dashboard, or bring your existing UPI ID and generate a PayLoyal QR/payment page for the demo.</p>
+    </section>
+
+    <section id="launchpadChoices" class="launchpad-choices">
+      <a class="launch-card" href="app.html">
+        <span class="product-icon">📊</span>
+        <h2>View sample merchant dashboard</h2>
+        <p>See customer insights, leaderboard, rewards, redemption tracking, and AI reports using demo data.</p>
+        <strong>Open dashboard →</strong>
+      </a>
+
+      <button class="launch-card launch-card-button" id="showUpiSetup" type="button">
+        <span class="product-icon">UPI</span>
+        <h2>Setup UPI</h2>
+        <p>Enter your existing UPI ID and basic business details. PayLoyal stores it and creates a demo QR/payment page.</p>
+        <strong>Start setup →</strong>
+      </button>
+    </section>
+
+    <section id="upiSetup" class="panel launchpad-form-panel hidden">
+      <div class="panel-heading-row">
+        <div>
+          <p class="eyebrow">Bring your own UPI</p>
+          <h2>Setup your PayLoyal QR</h2>
+          <p>Only basic details are needed for the demo. Full KYC can happen later if you go live.</p>
+        </div>
+        <span class="badge">No KYC for demo</span>
+      </div>
+
+      <form id="launchpadUpiForm" class="merchant-form">
+        <label>Business name
+          <input id="businessName" placeholder="Blue Bean Cafe" required />
+        </label>
+        <label>Existing UPI ID
+          <input id="merchantUpiId" placeholder="bluebeancafe@okaxis" required />
+        </label>
+        <label>Owner / manager name
+          <input id="ownerName" placeholder="Your name" required />
+        </label>
+        <label>Contact phone
+          <input id="ownerPhone" type="tel" placeholder="10-digit mobile number" maxlength="10" required />
+        </label>
+        <label>City
+          <input id="merchantCity" placeholder="Bengaluru" required />
+        </label>
+        <label>Business type
+          <select id="businessType">
+            <option>Cafe</option>
+            <option>Bakery</option>
+            <option>Salon</option>
+            <option>Restaurant</option>
+            <option>Kirana / retail</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <button class="button primary" type="submit">Save and generate demo QR</button>
+        <button class="button secondary" id="backToChoices" type="button">Back</button>
+      </form>
+
+      <p id="merchantSaveStatus" class="impact-summary">Your setup will be stored in Firebase and used to generate a demo payment link.</p>
+
+      <div id="setupResult" class="setup-result hidden">
+        <h3>Your PayLoyal demo QR is ready</h3>
+        <img id="setupQrImage" class="qr-image" alt="PayLoyal QR" />
+        <div id="setupQrUrl" class="qr-url"></div>
+        <div class="hero-actions qr-actions">
+          <a id="setupPreviewLink" class="button secondary" href="#">Preview payment page</a>
+          <a class="button primary" href="app.html">View sample dashboard</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="firebase-config.js"></script>
+  <script type="module" src="demo.js"></script>
+</body>
+</html>
